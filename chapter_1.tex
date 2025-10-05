@@ -1,0 +1,59 @@
+%\section{Introduction}
+
+
+\section{Background} 
+Artificial Intelligence (AI) is quickly transforming the legal profession by enhancing research, document drafting and comprehension of intricate laws. Although using AI tools can make the process of locating legal information more effective and quicker, Large Language Models (LLMs) tend to be confused by minor details of laws and ethical scenarios, thus making mistakes \cite{terzidou2025generative}. Even these LLMs have a tendency to hallucinate, or confidently give false information, which is not acceptable in a domain where correctness is paramount \cite{terzidou2025generative}\cite{Li2024}. This points to the fact that there is a substantial demand in having much more powerful AI, particularly in Bangladesh, where the idea of legal AI remains relatively novel and must deal with such issues as extremely high hallucination rates \cite{fan2024surveyragmeetingllms}\cite{Li2024}. Another factor is that LLMs require substantial computing resources, making them less usable, since they do not necessarily possess any particular knowledge of law \cite{fan2024surveyragmeetingllms}. To address these problems, a promising solution is Retrieval Augmented Generation (RAG) which allows LLMs to overcome them. Rather than using the built-in knowledge exclusively, RAG obtains current legal knowledge outside sources, which significantly mitigates hallucinations \cite{fan2024surveyragmeetingllms}\cite{lewis2021retrievalaugmentedgenerationknowledgeintensivenlp}. RAG process describes the process of organizing legal text data into searchable vector embeddings with the help of such tools as BGE or GTE, adding them to databases such as FAISS or Weaviate \cite{panchal2025lawpalretrievalaugmented}\cite{li2025lexragbenchmarkingretrievalaugmentedgeneration}\cite{khan2025efficienteducationalchatbotsbenchmarking}. Upon receiving a question posed by a user, RAG employs relevant information, which is usually enhanced through techniques such as query rewriting, to generate precise answers. In spite of the good performance of RAG overall, a lack of in-depth knowledge of complex, multilingual legal domains is reflected, demonstrating the relevance of specialised tools such as LexRAG to legal advice \cite{li2025lexragbenchmarkingretrievalaugmentedgeneration}. This is also enhanced by tools such as the Context Awareness Gate (CAG) that eliminates irrelevant information. Legal system in Bangladesh has its own barriers like a scarcity of digital tools, unreliable internet connection, and legal documents that contain both Bangla and English. In that regard, creating an intelligent, offline-capable legal AIs with CAG and Bangla NLP would be crucial towards weeding out the incorrect information and towards legal validity \cite{heydari2025contextawarenessgateretrieval}. Because Bangla legal documents are challenging and the data is limited, retrieval models such as Dense Passage Retriever (DPR) or SBERT require specifically training on Bangla legal documents \cite{reimers2019sentencebertsentenceembeddingsusing}. The idea is to have legal assistance on dumb phones without the internet. Compression of models such as Knowledge Distillation (KD) and Quantization is essential to make this possible. KD distills the knowledge of a large model into a smaller, more efficient model (such as DistilBERT \cite{sanh2020distilbertdistilledversionbert}, TinyBERT \cite{jiao2020tinybertdistillingbertnatural}, or MobileBERT \cite{sun2020mobilebertcompacttaskagnosticbert}), resulting in a model that is quicker and requires less energy. Quantization further reduces model size and accelerates processing \cite{10.1145/3644815.3644966}. Nevertheless, even considering the progress in multilingual LLMs, dedicated Bengali models are important since general LLMs fail at Bengali language tasks, in part due to a lack of data and efficient processing of Bengali text \cite{mahfuz2024latetrainearlyuse,unknown}. The data scarcity and evaluation problems make it hard to build useful Bengali LLMs, which is why specific, lightweight legal AI designed to fit the Bangladesh context is necessary.
+
+
+\section{Rational of the Study or Motivation}
+
+
+While LLMs and RAG frameworks have demonstrated strong performance across various domains, their real-world applicability is often tied to cloud servers with huge computational capabilities. In Bangladesh, the general population access technology via mobile devices and a large portion of the population still lacks reliable internet access. Furthermore, legal systems are difficult to navigate due to complex terminology, unstructured data formats, and scarcity of legal resources in vernacular languages.
+Our work is motivated by the need to democratize access to legal information by utilizing the recent advances in NLP in a way that is resource-efficient and accessible to the broader population. By distilling a domain-adapted LLM and integrating it with a lightweight retrieval mechanism, we aim to provide an offline-capable legal assistant that is both trustworthy and easy to use. The solution will not only be technically significant due to the optimization challenges it presents but also socially impactful as it addresses a pressing gap in public access to legal knowledge. Our goal is inclusive technological development that aligns with the socio-economic and infrastructural realities of a developing nation by bridging the divide in legal awareness and services and contributing to low-resource NLP and edge-deployable AI systems.
+
+\section{Problem Statement}
+
+
+Large Language Models are computationally intensive and typically require cloud infrastructure with real-time inference which is what makes them so powerful and give them a very broad use case from generating content to debugging code etc. But such performance requirements can't be met  with our everyday devices. Furthermore these models lack domain specific knowledge and often generalize responses and require consistent internet access. There are currently no lightweight, offline-capable RAG-based legal assistant specifically designed to handle the nuances of legal frameworks. The presence of such a tool can diminish the barrier for many citizens in understanding their rights. We will try to create a domain-adapted low parameter RAG model capable of delivering legal information offline with efficient operation for smaller devices without compromising integrity and accuracy. 
+
+
+\section{Objective}
+
+The objectives for our work as discussed: 
+\begin{enumerate}
+    \item Designing a lightweight Retrieval-Augmented Generation (RAG) pipeline that integrates retrieval and generation in a resource-efficient manner.
+    \item Applying LLM distillation to scale down a larger model while preserving domain-specific performance and language understanding.
+    \item Incorporating legal knowledge into the model to ensure contextual accuracy and practical relevance.
+    \item Developing an offline-compatible architecture to enable deployment on low-resource devices such as smartphones.
+    \item Evaluating the model's performance in terms of legal accuracy, computational efficiency, and user experience.
+\end{enumerate}
+
+\section{Methodology in Brief }
+
+Our approach consists of four primary stages. First, we will collect and preprocess domain-specific legal data relevant to the Bangladeshi legal system. After that we will apply model distillation techniques to compress a large pre-trained LLM into a smaller, efficient version. Then we will design a lightweight Retrieval-Augmented Generation (RAG) pipeline optimized for low-resource environments. Finally the system will be evaluated for accuracy, efficiency and offline usability on edge devices. 
+
+\section{Scopes and Challenges}
+
+
+
+\begin{enumerate}
+    \item \textbf{Model Compression Trade-offs:} Reducing model size without significantly degrading performance in retrieval and generation tasks.
+    
+    \item \textbf{Domain-Specific Adaptation:} Ensuring accurate understanding and generation of legal language, which is complex and context-sensitive.
+    
+    \item \textbf{Retrieval Efficiency:} Designing a lightweight and fast retrieval mechanism that works well on limited hardware.
+    
+    \item \textbf{Offline Functionality:} Maintaining performance without cloud-based support or large memory/storage resources.
+    
+    \item \textbf{Data Availability:} Accessing and preprocessing high-quality, structured legal data relevant to the Bangladeshi legal system.
+    
+    \item \textbf{Evaluation Metrics:} Defining appropriate benchmarks to evaluate legal accuracy, responsiveness, and usability in low-resource settings.
+    
+    \item \textbf{User Experience Design:} Balancing technical capabilities with a simple and accessible interface for non-technical users.
+\end{enumerate}
+
+
+
+
+
+
